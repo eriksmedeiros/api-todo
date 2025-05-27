@@ -23,8 +23,7 @@ public class TaskService {
     public TaskModel saveTask(TaskDTO taskDTO) {
         TaskModel taskModel = new TaskModel(
                 taskDTO.getName(),
-                taskDTO.getDescription(),
-                taskDTO.isCompleted()
+                taskDTO.getStatus()
         );
 
         return taskRepository.save(taskModel);
