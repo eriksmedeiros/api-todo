@@ -5,8 +5,6 @@ import br.com.erik.toDoList.services.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-@CrossOrigin(origins = "http://localhost:4200/*")
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
