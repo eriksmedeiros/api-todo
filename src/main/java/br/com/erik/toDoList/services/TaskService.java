@@ -6,6 +6,8 @@ import br.com.erik.toDoList.repositories.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class TaskService {
@@ -27,5 +29,28 @@ public class TaskService {
         );
 
         return taskRepository.save(taskModel);
+    }
+
+    public TaskModel editTask(TaskDTO taskDTO, UUID id) {
+        Optional<TaskModel> taskModel = taskRepository.findById(id);
+
+        if (taskModel.isPresent()) {
+            taskModel.get().setName(taskDTO.getName());
+            taskModel.get().setStatus(taskDTO.getStatus());
+            return taskRepository.save(taskModel.get());
+        } else {
+            throw new RuntimeException("Task not found");
+        }
+    }
+
+    public String removeTask(UUID id) {
+        Optional<TaskModel> taskModel = taskRepository.findById(id);
+
+        if (taskModel.isPresent()) {
+            taskRepository.delete(taskModel.get());
+            return "Task deleted successfully";
+        } else {
+            throw new RuntimeException("Task not found");
+        }
     }
 }
