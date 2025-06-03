@@ -1,23 +1,35 @@
 package br.com.erik.toDoList.dtos;
 
+import java.util.UUID;
+
 public class TaskDTO {
-    private String name;
+    private UUID id;
+    private String title;
     private String status;
 
     public TaskDTO() {
     }
 
-    public TaskDTO(String name, String status) {
-        this.name = name;
+    public TaskDTO(UUID id, String title, String status) {
+        this.id = id;
+        this.title = title;
         this.status = status;
     }
 
-    public String getName() {
-        return name;
+    public UUID getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getStatus() {

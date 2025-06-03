@@ -18,13 +18,15 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<TaskModel> getTasks() {
-        return taskRepository.findAll();
+    public List<TaskDTO> getTasks() {
+        return taskRepository.findAll().stream()
+                .map(task -> new TaskDTO(task.getId(), task.getTitle(), task.getStatus()))
+                .toList();
     }
 
     public TaskModel saveTask(TaskDTO taskDTO) {
         TaskModel taskModel = new TaskModel(
-                taskDTO.getName(),
+                taskDTO.getTitle(),
                 taskDTO.getStatus()
         );
 
@@ -35,7 +37,7 @@ public class TaskService {
         Optional<TaskModel> taskModel = taskRepository.findById(id);
 
         if (taskModel.isPresent()) {
-            taskModel.get().setName(taskDTO.getName());
+            taskModel.get().setTitle(taskDTO.getTitle());
             taskModel.get().setStatus(taskDTO.getStatus());
             return taskRepository.save(taskModel.get());
         } else {

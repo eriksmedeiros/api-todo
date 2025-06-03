@@ -9,16 +9,25 @@ import java.util.UUID;
 public class TaskModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    private String name;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    private String title;
     private String status;
 
     public TaskModel() {
     }
 
-    public TaskModel(String name, String status) {
-        this.name = name;
+    public TaskModel(String title, String status) {
+        this.title = title;
         this.status = status;
     }
 
@@ -30,11 +39,11 @@ public class TaskModel {
         this.status = status;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

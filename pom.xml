@@ -11,7 +11,7 @@
 	<groupId>br.com.erik</groupId>
 	<artifactId>toDoList</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>toDoList</name>
+	<title>toDoList</title>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
