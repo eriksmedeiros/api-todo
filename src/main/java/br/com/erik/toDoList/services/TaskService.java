@@ -45,12 +45,11 @@ public class TaskService {
         }
     }
 
-    public String removeTask(UUID id) {
+    public void removeTask(UUID id) {
         Optional<TaskModel> taskModel = taskRepository.findById(id);
 
         if (taskModel.isPresent()) {
             taskRepository.delete(taskModel.get());
-            return "Task deleted successfully";
         } else {
             throw new RuntimeException("Task not found");
         }
